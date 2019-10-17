@@ -17,7 +17,7 @@ if(_currentView == "ServiceAreaVehicleSelect") then {
 		];
 	} forEach _vehiclesInArea;
 	_btnFillData pushBack [
-		"Zamknij",
+		localize "HVR_CLOSE",
 		"([] call HVR_VS_fnc_getVehicleServiceAreaDisplay) closeDisplay 2"
 	];
 

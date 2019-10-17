@@ -10,7 +10,7 @@ _vehicle = (_display getVariable ["HVR_VS_vehiclesInArea", 0]) select _vehicleIn
 _display setVariable ["HVR_VS_currentVehicle", _vehicle];
 
 [
-	"Serwis pojazdu: " + (getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "DisplayName")),
+	(localize "HVR_VEHICLE_SERVICE") + ": " + (getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "DisplayName")),
 	""
 ] call HVR_VS_fnc_guiSetPanelContent;
 
@@ -19,7 +19,7 @@ _btnFillData = [];
 /** Paliwo */
 if((fuel _vehicle) < 1) then {
 	_btnFillData pushBack [
-		"Zatankuj pojazd",
+		localize "HVR_REFUEL_VEHICLE",
 		"[] call HVR_VS_fnc_refuelVehicle"
 	];
 };
@@ -27,7 +27,7 @@ if((fuel _vehicle) < 1) then {
 /** Obrażenia */
 if((damage _vehicle) > 0) then {
 	_btnFillData pushBack [
-		"Napraw pojazd",
+		localize "HVR_REPAIR_VEHICLE",
 		"[] call HVR_VS_fnc_repairVehicle"
 	];
 };
@@ -35,25 +35,25 @@ if((damage _vehicle) > 0) then {
 /** Podwieszenia */
 if(count (getPylonMagazines _vehicle) > 0) then {	
 	_btnFillData pushBack [
-		"Konfiguracja uzbrojenia",
+		localize "HVR_PYLON_LOADOUTS",
 		"[] call HVR_VS_fnc_viewServiceAreaVehiclePylonSelect"			
 	];
 	
 	
 	_btnFillData pushBack [
-		"Uzupełnij uzbrojenie na pylonach",
+		localize "HVR_PYLON_LOADOUTS_AMMO",
 		"[] call HVR_VS_fnc_rearmPylons"
 	];
 };
 
 
 _btnFillData pushBack [
-	"Powrót",
+	localize "HVR_BACK",	
 	"[] call HVR_VS_fnc_viewServiceAreaVehicleSelect"
 ];
 
 _btnFillData pushBack [
-	"Zamknij",
+	localize "HVR_CLOSE",
 	"([] call HVR_VS_fnc_getVehicleServiceAreaDisplay) closeDisplay 2"
 ];
 

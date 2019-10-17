@@ -7,8 +7,8 @@ _display setVariable ["HVR_VS_currentView", "ServiceAreaVehiclePylonSelect"];
 _vehicle = _display getVariable "HVR_VS_currentVehicle";
 
 [
-	"Konfiguracja podwieszenia dla pojazdu: " + (getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "DisplayName")),
-	"Wybierz, które podwieszenie chcesz konfigurować"
+	(localize "HVR_PYLON_LOADOUT_FOR") + ": " + (getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "DisplayName")),
+	localize "HVR_PYLON_CHOOSE"
 ] call HVR_VS_fnc_guiSetPanelContent;
 
 _btnFillData = [];
@@ -19,7 +19,7 @@ _btnFillData = [];
 	];
 } forEach (getPylonMagazines _vehicle);
 _btnFillData pushBack [
-	"Zamknij",
+	localize "HVR_CLOSE",
 	"([] call HVR_VS_fnc_getVehicleServiceAreaDisplay) closeDisplay 2"
 ];
 
