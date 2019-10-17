@@ -7,7 +7,7 @@ _hasVehicleServiceAction = _object getVariable ["HVR_VS_hasVehicleServiceAction"
 
 if(!_hasVehicleServiceAction) then {
 	_actionIndex = _object addAction [
-		"Serwis pojazdów",
+		localize "HVR_VEHICLES_SERVICE",
 		{
 			[_this select 0] call HVR_VS_fnc_createServiceAreaDisplay;
 		},
